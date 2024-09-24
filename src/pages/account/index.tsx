@@ -15,14 +15,17 @@ const menuItems = [
     title: "Accounts",
     subItems: [
       { title: "Profile", route: "/account/profile" },
-      { title: "Addresses", route: "/account/address" },
+      // { title: "Addresses", route: "/account/address" },
       { title: "Change Password", route: "/account/changePassword" },
     ],
   },
-  {
-    title: "Orders",
-    subItems: [{ title: "Orders & Returns", route: "/account/orders-returns" }],
-  },
+  // {
+  //   title: "Orders",
+  //   subItems: [
+  //     { title: "Orders & Returns", route: "/account/orders-returns" },
+  //   ],
+  // },
+  
 ];
 
 const adminMenuItems = [
@@ -100,7 +103,11 @@ const AccountPage = () => {
                 {menuItem.subItems.length > 0 && (
                   <List>
                     {menuItem.subItems.map((subItem, subIndex) => (
-                      <ListItem key={subIndex} onClick={() => onClickHandler(subItem.route)} className="cursor-pointer">
+                      <ListItem
+                        key={subIndex}
+                        onClick={() => onClickHandler(subItem.route)}
+                        className="cursor-pointer"
+                      >
                         <ListItemText
                           primary={subItem.title}
                           primaryTypographyProps={{
@@ -116,12 +123,13 @@ const AccountPage = () => {
                     ))}
                   </List>
                 )}
-                {index !== menuItems.length - 1 && <Divider sx={{ width: "90%", mx: "auto" }} />}
+                {index !== menuItems.length - 1 && (
+                  <Divider sx={{ width: "90%", mx: "auto" }} />
+                )}
               </React.Fragment>
             ))}
 
-            {user &&
-              user.role === "Admin" &&
+{user && user.role === "Admin" &&
               adminMenuItems.map((menuItem, index) => (
                 <React.Fragment key={index}>
                   <ListItem>
@@ -135,7 +143,11 @@ const AccountPage = () => {
                   {menuItem.subItems.length > 0 && (
                     <List>
                       {menuItem.subItems.map((subItem, subIndex) => (
-                        <ListItem key={subIndex} onClick={() => onClickHandler(subItem.route)} className="cursor-pointer">
+                        <ListItem
+                          key={subIndex}
+                          onClick={() => onClickHandler(subItem.route)}
+                          className="cursor-pointer"
+                        >
                           <ListItemText
                             primary={subItem.title}
                             primaryTypographyProps={{
@@ -151,7 +163,9 @@ const AccountPage = () => {
                       ))}
                     </List>
                   )}
-                  {index !== adminMenuItems.length - 1 && <Divider sx={{ width: "90%", mx: "auto" }} />}
+                  {index !== adminMenuItems.length - 1 && (
+                    <Divider sx={{ width: "90%", mx: "auto" }} />
+                  )}
                 </React.Fragment>
               ))}
           </List>
